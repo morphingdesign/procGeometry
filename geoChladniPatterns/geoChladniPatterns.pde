@@ -41,10 +41,13 @@ void draw() {
   background(0); 
 
   pushMatrix();
-  translate(width/2, height/2);
+  //translate(width/2, height/2);
   //rotateX(frameCount * 0.003);
   //rotateY(frameCount * 0.003);
   //rotateZ(frameCount * 0.003);
+  
+  translate(width/2, height/2 - 100, -100);
+  rotateX(radians(45));
   
   stroke(255);
   strokeWeight(1);
