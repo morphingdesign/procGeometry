@@ -36,20 +36,40 @@ class LatLon {
   
   // *******************************************************
   // 
-  void drawShape(){
+  void drawPts(){
       
-      stroke(0, 255, 0);
-      strokeWeight(1);
       
+      strokeWeight(3);
+      
+      stroke(255, 0, 0);
       for(Lon i: lonLines){
-          //i.drawLonPts();
+          i.drawLonPts();
       }
       
+      
+      stroke(0, 0, 255);
       for(Lat j: latLines){
           j.drawLatPts();
       }      
       
   }
+  
+  void drawLines(){
+      
+      strokeWeight(1);
+      
+      stroke(0, 255, 0);
+      for(Lon i: lonLines){
+          i.drawLonLines();
+      }
+      
+      stroke(0, 255, 255);
+      for(Lat i: latLines){
+          i.drawLatLines();
+      }      
+  }
+  
+  
   
 
 }  

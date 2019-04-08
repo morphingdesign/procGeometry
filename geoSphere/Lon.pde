@@ -2,7 +2,7 @@
 class Lon {  
   
   // Class Variables 
-  float radius = 100;
+  float radius = 300;
   float theta, phi;
   float x, y, z;
   float thetaIter = 0.2;  // Controls distance between latitude lines
@@ -33,8 +33,15 @@ class Lon {
       for(int i=0; i < colPts.length; i++){
          point(colPts[i].x, colPts[i].y, colPts[i].z);
       }
+  } 
+  
+  void drawLonLines(){
+      for(int i=1; i < colPts.length; i++){
+         line(colPts[i-1].x, colPts[i-1].y, colPts[i-1].z, colPts[i].x, colPts[i].y, colPts[i].z);
+      }
   }
   
-
   
-}  
+ 
+
+}

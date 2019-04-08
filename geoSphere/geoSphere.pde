@@ -18,7 +18,8 @@ void draw() {
   
   //spiralShape.drawShape();
   
-  sphereGrid.drawShape();
+  sphereGrid.drawPts();
+  sphereGrid.drawLines();
   
   /**
   randomSeed(4);

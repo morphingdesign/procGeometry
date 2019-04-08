@@ -2,7 +2,7 @@
 class Lat {  
   
   // Class Variables 
-  float radius = 100;
+  float radius = 300;
   float theta, phi;
   float x, y, z;
   float thetaIter = 0.2;  // Controls distance between latitude lines
@@ -34,4 +34,11 @@ class Lat {
          point(rowPts[i].x, rowPts[i].y, rowPts[i].z);
       }
   }
+  
+  void drawLatLines(){
+      for(int i=1; i < rowPts.length; i++){
+         line(rowPts[i-1].x, rowPts[i-1].y, rowPts[i-1].z, rowPts[i].x, rowPts[i].y, rowPts[i].z);
+      }
+  }
+  
 }  
