@@ -16,7 +16,8 @@ void draw() {
   //rotateX(frameCount*0.001);
   rotateY(frameCount*0.01);
   
-  //spiralShape.drawShape();
+  spiralShape.drawPts();
+  spiralShape.drawLines();
   
   sphereGrid.drawPts();
   sphereGrid.drawLines();

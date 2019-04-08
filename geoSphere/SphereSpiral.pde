@@ -2,7 +2,7 @@
 class SphereSpiral {  
   
   // Class Variables 
-  float radius = 100;
+  float radius = 320;
   float theta, phi;
   float x, y, z;
   float thetaIter = 0.2;  // Controls distance between latitude lines
@@ -28,11 +28,19 @@ class SphereSpiral {
   
   // *******************************************************
   // 
-  void drawShape(){
+  void drawPts(){
       stroke(255);
-      strokeWeight(1);
+      strokeWeight(3);
       for(int i=0; i < pts.length; i++){
          point(pts[i].x, pts[i].y, pts[i].z);
+      }
+  }
+  
+  void drawLines(){
+      stroke(255, 255, 0);
+      strokeWeight(1);
+      for(int i=1; i < pts.length; i++){
+         line(pts[i-1].x, pts[i-1].y, pts[i-1].z, pts[i].x, pts[i].y, pts[i].z);
       }
   }
 }  
