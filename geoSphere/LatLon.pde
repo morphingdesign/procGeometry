@@ -9,35 +9,38 @@ class LatLon {
   float phiIter = 0.2;    // Controls distance between longitude lines
   
   PVector[] pts = new PVector[100];
-  PVector[] rows = new PVector[6];
-  PVector[] cols = new PVector[12];
+  PVector[] rowPts = new PVector[6];
+  PVector[] colPts = new PVector[12];
   
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   // Class Constructor
   // 
   LatLon(){  
       
+      // Create longitude lines
       for(theta=0; theta <= 2 * PI; theta+=thetaIter){        
-          for(int i=0; i < cols.length; i++){
-               //theta = map(i, 0, rows.length, 0, 2 * PI);
-               phi = map(i, 0, cols.length, 0, 2 * PI);
+          for(int i=0; i < colPts.length; i++){
+               phi = map(i, 0, colPts.length, 0, 2 * PI);
                x = radius * cos(theta) * sin(phi);
                y = radius * cos(phi);
                z = radius * sin(theta) * sin(phi);
                //point(x, y, z);
-               cols[i] = new PVector(x, y, z);
+               colPts[i] = new PVector(x, y, z);
           }
       }
           
-    
-      for(int i=0; i < pts.length; i++){
-         theta = map(i, 0, pts.length, 0, 2 * PI);
-         phi = map(i, 0, pts.length, 0, PI);
-         x = radius * cos(theta) * sin(phi);
-         y = radius * cos(phi);
-         z = radius * sin(theta) * sin(phi);   
-         pts[i] = new PVector(x, y, z);
-      }
+      // Create latitude lines
+      for(phi=0; phi <= PI; phi+=phiIter){        
+          for(int i=0; i < rowPts.length; i++){
+               theta = map(i, 0, rowPts.length, 0, 2 * PI);
+               x = radius * cos(theta) * sin(phi);
+               y = radius * cos(phi);
+               z = radius * sin(theta) * sin(phi);
+               //point(x, y, z);
+               rowPts[i] = new PVector(x, y, z);
+          }
+      }    
+
      
   }
  
@@ -48,24 +51,22 @@ class LatLon {
   // 
   void drawShape(){
       
-      stroke(255);
+      stroke(0, 255, 0);
       strokeWeight(1);
-     
-         //println(0 + ": (" + pts[0].x + ", " + pts[0].y + ", " + pts[0].z + ")");
-         //println(1 + ": (" + pts[1].x + ", " + pts[1].y + ", " + pts[1].z + ")");
-     
-     
-      for(int i=0; i < pts.length; i++){
-         //println(i + ": (" + pts[i].x + ", " + pts[i].y + ", " + pts[i].z + ")");
-         //point(pts[i].x, pts[i].y, pts[i].z);
-      }
     
-    
-      for(int i=0; i < cols.length; i++){
+      // Draw longitude lines
+      for(int i=0; i < colPts.length; i++){
          //println(i + ": (" + pts[i].x + ", " + pts[i].y + ", " + pts[i].z + ")");
-         point(cols[i].x, cols[i].y, cols[i].z);
+         point(colPts[i].x, colPts[i].y, colPts[i].z);
       }
-
+      
+      stroke(255, 255, 0);
+      
+      // Draw latitude lines
+      for(int i=0; i < rowPts.length; i++){
+         //println(i + ": (" + pts[i].x + ", " + pts[i].y + ", " + pts[i].z + ")");
+         point(rowPts[i].x, rowPts[i].y, rowPts[i].z);
+      }
   }
   
 
