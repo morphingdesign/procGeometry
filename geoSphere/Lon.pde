@@ -2,26 +2,27 @@
 class Lon {  
   
   // Class Variables 
-  float radius = 300;
-  float theta, phi;
-  float x, y, z;
-  float thetaIter = 0.2;  // Controls distance between latitude lines
-  float phiIter = 0.2;    // Controls distance between longitude lines
-  
-  PVector[] colPts = new PVector[12];
+  float radius, theta, phi, x, y, z;
+  int numPts;
+  PVector[] colPts;
   
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   // Class Constructor
   // Create longitude lines
-  Lon(float theta){
+  Lon(float theta, float radius, int numPts){
       this.theta = theta;
-          for(int i=0; i < colPts.length; i++){
-               phi = map(i, 0, colPts.length, 0, 2 * PI);
-               x = radius * cos(theta) * sin(phi);
-               y = radius * cos(phi);
-               z = radius * sin(theta) * sin(phi);
-               colPts[i] = new PVector(x, y, z);
-          }
+      this.radius = radius;
+      this.numPts = numPts;
+      
+      colPts = new PVector[numPts];
+      
+      for(int i=0; i < colPts.length; i++){
+           phi = map(i, 0, colPts.length, 0, 2 * PI);
+           x = radius * cos(theta) * sin(phi);
+           y = radius * cos(phi);
+           z = radius * sin(theta) * sin(phi);
+           colPts[i] = new PVector(x, y, z);
+      }
   }
  
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
