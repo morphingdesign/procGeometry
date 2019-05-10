@@ -13,13 +13,15 @@ color whiteGrad50 = color(255, 50);
 color whiteGrad15 = color(255, 15);
 color whiteGrad5 = color(255, 5);
 color whiteSolid = color(255);
+color gray = color(100);
 
-Spiral spiralGeo;
+Spiral spiralGeo1, spiralGeo2;
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 void setup() {
-  size(1000, 1000);
-  spiralGeo = new Spiral();
+  size(1920, 1080);
+  spiralGeo1 = new Spiral(1);
+  spiralGeo2 = new Spiral(0);
 }
 
 
@@ -27,7 +29,8 @@ void setup() {
 void draw() {
   background(blackSolid);
 
-  spiralGeo.draw();
+  spiralGeo1.draw();
+  spiralGeo2.draw();
 }
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
