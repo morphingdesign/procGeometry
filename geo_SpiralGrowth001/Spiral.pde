@@ -67,9 +67,13 @@ class Spiral {
             //}
             
             pscale = angle * counter / sin(angle);
-            //stroke(map(pscale, 0, 200, 0, 255), map(angle, -PI, PI, 0, 255), map(multiplier, -TWO_PI, TWO_PI, 0, 255));
             
-            stroke(map(mouseY, height * 2, -height * 2, 0, 255), map(mouseY, 0, height/2, 0, 255), map(multiplier, -TWO_PI, TWO_PI, 0, 255));
+            //Original stroke config
+            //stroke(map(pscale, 0, 100, 0, 255), map(angle, -PI, PI, 0, 255), map(multiplier, -TWO_PI, TWO_PI, 0, 255));
+            
+            //stroke(map(mouseY, height * 2, -height * 2, 0, 255), map(mouseY, 0, height/2, 0, 255), map(multiplier, -TWO_PI, TWO_PI, 0, 255));
+            
+            stroke(map(mouseY, height * 2, -height * 2, 0, 255), map(pscale, 0, 100, 0, 255), map(multiplier, -TWO_PI, TWO_PI, 0, 255));
             
             if(optionSet == 1){
                strokeWeight((pscale / counter) * (i / multiplier) + radians(iteration * growth));        // light pattern
