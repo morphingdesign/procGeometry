@@ -8,7 +8,7 @@ Video link demonstrating animated geometry: https://vimeo.com/335535320
 Program Screen Captures:
 <br />
 <br />
-!Screen Capture](../master/geo_SpiralGrowth001/git_proc_SpiralGrowth001.PNG)
+!Screen Capture](../geo_SpiralGrowth001/git_proc_SpiralGrowth001.PNG)
 <br />
 <br />
 !Screen Capture](../master/geo_SpiralGrowth001/git_proc_SpiralGrowth002.PNG)
