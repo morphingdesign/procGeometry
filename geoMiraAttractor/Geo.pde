@@ -2,7 +2,7 @@
 class Geo {
 
   // Maintain a low number of pts
-  PVector[] pos = new PVector[10000];
+  PVector[] pos = new PVector[100000];
   
   float x, y, xBegin, yBegin, z, a, b;
   
