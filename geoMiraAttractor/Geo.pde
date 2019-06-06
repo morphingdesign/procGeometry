@@ -2,7 +2,7 @@
 class Geo {
 
   // Maintain a low number of pts
-  PVector[] pos = new PVector[150];
+  PVector[] pos = new PVector[10000];
   
   float x, y, xBegin, yBegin, z, a, b;
   
@@ -27,7 +27,7 @@ class Geo {
       this.z = z;
       this.a = a;
       this.b = b;
-      
+
       pushMatrix();
       translate(width/2, height/2);
       pos[0] = new PVector(xBegin, yBegin);
@@ -49,49 +49,27 @@ class Geo {
   void draw(){
       stroke(whiteSolid);
       strokeWeight(1);
-      //dir = 0.05;
-      //iteration = map(mouseX, 0, width, 5, 30);
-      //int radius = 18;          // Controls the overall size of geo in canvas
-      //float angle = sin(radians(iteration));
-      //float multiplier = sin(growth) * radius;
-      //growth = 1;
-      //growth+=growthIncrease;
-      //iteration+=1;
-      float scalar = 2;
+      
+      // Controls for pattern definition
+      a = map(mouseX, 0, width, 0.15, 0.95);
+      b = map(mouseY, 0, height, 0.9, 0.99);
+      float multiplier = map(mouseY, 0, height, 1.05, 1.01);
+
       pushMatrix();
       translate(width/2, height/2);
       
       for(counter=1; counter < pos.length; counter++){
-          //for (float i=0; i < dir * pos.length; i+=dir) {
-            //angleStart+=angle;
-            //pscale = angle * counter / sin(angle);
-            //stroke(map(mouseY, height * 2, -height * 2, 0, 255), map(pscale, 0, 100, 0, 255), map(multiplier, -TWO_PI, TWO_PI, 0, 255));
-            //if(optionSet == 1){
-            //   strokeWeight((pscale / counter) * (i / multiplier) + radians(iteration * growth));        // light pattern
-            //}
-            //else{
-            //    strokeWeight((pscale / counter) * (pow(angle, i) * pscale / multiplier));                         // heavy pattern
-            //}            
-            //pushMatrix();
-            //rotate(angleStart);
-            //float x = (0 + tan(angle/angleStart * i)) * multiplier;
-            //float y = (iteration + cos(angleStart) + tan(angleStart/angle)) * multiplier;
             
             // Use last pt's x-value in F(x) equation for new x
             float fx = a * pos[counter - 1].x + ((2 * (1 - a) * pos[counter - 1].x * pos[counter - 1].x) / (1 + pos[counter - 1].x * pos[counter - 1].x)); 
-            x = ((b * pos[counter - 1].y) + fx);
-            // Multiply by scalar, if necessary
-            //println("point[" + counter + "]: (" + y + ")");
-            // Use the current x in F(x) equation for use in new y
-            fx = a * x + ((2 * (1 - a) * x * x) / (1 + x * x)); 
-            y = (-pos[counter - 1].x + fx);
+            x = ((b * pos[counter - 1].y) + fx);                    // Use the previous point's y and latest fx in new x
+            fx = a * x + ((2 * (1 - a) * x * x) / (1 + x * x));     // Use the current x in F(x) equation for use in new y
+            y = (-pos[counter - 1].x + fx);                         // Use the previous point's x and latest fx in new y
               
-            pos[counter].x = x;
-            pos[counter].y = y;
+            pos[counter].x = x * multiplier;
+            pos[counter].y = y * multiplier;
             point(pos[counter].x, pos[counter].y);
-            println("point[" + counter + "]: (" + pos[counter].x + ", " + pos[counter].y + ")");
-            //popMatrix();            
-          
+            //println("point[" + counter + "]: (" + pos[counter].x + ", " + pos[counter].y + ")");
       }
       popMatrix();
   }
