@@ -25,6 +25,8 @@ float iterInit = .1;
 float iteration = .001;
 int counter = 0;
 
+float animSpeed = 0.03;  // Speed for animation
+
 Geo geoShape;
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,5 +38,9 @@ void setup() {
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 void draw() {  
   background(blackSolid);
+  pushMatrix();
+  //translate(0, 0, 0);
+
   geoShape.draw();
+  popMatrix();
 }

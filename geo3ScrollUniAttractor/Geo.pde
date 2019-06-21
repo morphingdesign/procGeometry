@@ -57,48 +57,10 @@ class Geo {
       float multiplier = 0.001;
 
       pushMatrix();
-      translate(width/2, height/2, 0);
-     
-      
-      // Iterative Testing
-      /**
-      dx = (a * (pos[0].y - pos[0].x) + ( d * pos[0].x * pos[0].z));  
-      dy = (f * pos[0].y - pos[0].x * pos[0].z);
-      dz = (c * pos[0].z + pos[0].x * pos[0].y - e * pos[0].x * pos[0].x);
-      
-      pos[1].x = pos[0].x + dx * multiplier;
-      pos[1].y = pos[0].y + dy * multiplier;
-      pos[1].z = pos[0].z + dz * multiplier;
-      
-      point(pos[1].x, pos[1].y, pos[1].z);
-      println("point[1]: (" + pos[1].x + ", " + pos[1].y + ", " + pos[1].z + ")");
-      
-      
-      dx = (a * (pos[1].y - pos[1].x) + ( d * pos[1].x * pos[1].z));  
-      dy = (f * pos[1].y - pos[1].x * pos[1].z);
-      dz = (c * pos[1].z + pos[1].x * pos[1].y - e * pos[1].x * pos[1].x);
-      
-      pos[2].x = pos[1].x + dx * multiplier;
-      pos[2].y = pos[1].y + dy * multiplier;
-      pos[2].z = pos[1].z + dz * multiplier;
-      
-      point(pos[2].x, pos[2].y, pos[2].z);
-      println("point[2]: (" + pos[2].x + ", " + pos[2].y + ", " + pos[2].z + ")");
-      
-
-      dx = (a * (pos[2].y - pos[2].x) + ( d * pos[2].x * pos[2].z));  
-      dy = (f * pos[2].y - pos[2].x * pos[2].z);
-      dz = (c * pos[2].z + pos[2].x * pos[2].y - e * pos[2].x * pos[2].x);
-      
-      pos[3].x = pos[2].x + dx * multiplier;
-      pos[3].y = pos[2].y + dy * multiplier;
-      pos[3].z = pos[2].z + dz * multiplier;
-      
-      point(pos[3].x, pos[3].y, pos[3].z);
-      println("point[3]: (" + pos[3].x + ", " + pos[3].y + ", " + pos[3].z + ")");
-      **/
-
-    
+      translate(width/2, height/2, 800);
+      rotateX(frameCount * animSpeed);
+      rotateY(frameCount * animSpeed);
+      rotateZ(frameCount * animSpeed);
       for(counter=1; counter < pos.length; counter++){
                         
             dx = (a * (pos[counter - 1].y - pos[counter - 1].x) + ( d * pos[counter - 1].x * pos[counter - 1].z));  
@@ -109,7 +71,7 @@ class Geo {
             pos[counter].y = pos[counter - 1].y + dy * multiplier;
             pos[counter].z = pos[counter - 1].z + dz * multiplier;
             point(pos[counter].x, pos[counter].y, pos[counter].z);
-            println("point[" + counter + "]: (" + pos[counter].x + ", " + pos[counter].y + ", " + pos[counter].z + ")");
+            //println("point[" + counter + "]: (" + pos[counter].x + ", " + pos[counter].y + ", " + pos[counter].z + ")");
             
       }
     
